@@ -1,16 +1,16 @@
-import FormInput from '@/components/FormInput';
+import Buttons from '@/components/Buttons';
 import InputComps from '@/components/InputComps';
 import LabelInput from '@/components/LabelInput';
 import Link from 'next/link';
 import React from 'react';
-import { RiLockPasswordLine, RiMailLine } from 'react-icons/ri';
+import { RiLockPasswordFill, RiMailFill } from 'react-icons/ri';
 
 const SignIn = () => {
   return (
     <div className="card bg-white w-96 shadow-lg">
       <div className="card-body">
         <div className="flex flex-col justify-center items-center">
-          <div className="card-title text-2xl">Sign In</div>
+          <div className="card-title text-2xl text-gray-700">Sign In</div>
           <p className="mt-2 flex gap-1 text-sm text-gray-600 dark:text-neutral-400">
             Belum Punya Akun?
             <Link
@@ -31,7 +31,7 @@ const SignIn = () => {
                 <LabelInput label="Email" altText={''} />
                 <InputComps
                   error={undefined}
-                  icons={RiMailLine}
+                  icons={RiMailFill}
                   type="email"
                   placeholder="Masukkan email anda"
                 />
@@ -45,7 +45,7 @@ const SignIn = () => {
                 />
                 <InputComps
                   error={undefined}
-                  icons={RiLockPasswordLine}
+                  icons={RiLockPasswordFill}
                   type="password"
                   placeholder="Masukkan password anda"
                 />
@@ -60,6 +60,7 @@ const SignIn = () => {
                   />
                 </label>
               </div>
+              <Buttons variant="primary">Login</Buttons>
             </div>
           </form>
         </div>
