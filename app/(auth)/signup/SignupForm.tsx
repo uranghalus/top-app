@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Buttons from '@/components/Buttons';
 import InputComps from '@/components/InputComps';
 import LabelInput from '@/components/LabelInput';
@@ -22,7 +22,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { json } from 'stream/consumers';
+import { RegisterService } from '@/lib/services/auth-services';
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -48,34 +48,21 @@ const SignupForm = () => {
 
   // 2. Define a submit handler.
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    toast.error('Oops!', {
-      description: 'data?.error',
-      // action: {
-      //   label: 'Undo',
-      //   onClick: () => console.log('Undo'),
-      // },
-    });
-    // try {
-    //   // const response = await fetch('/api/register', {
-    //   //   method: 'POST',
-    //   //   headers: {
-    //   //     'Content-Type': 'application/json',
-    //   //   },
-    //   //   body: JSON.stringify(values),
-    //   // });
-    //   // const data = await response.json();
-    //   // if (!response.ok) {
-    //   //   toast.error('Oops!', {
-    //   //     description: data?.error,
-    //   //     // action: {
-    //   //     //   label: 'Undo',
-    //   //     //   onClick: () => console.log('Undo'),
-    //   //     // },
-    //   //   });
-    //   // }
-    // } catch (error) {
-    //   console.error('Error', error);
-    // }
+    try {
+      const response = await RegisterService(values);
+      if (response.error) {
+        // Handle non-200 responses
+        toast.error('Oops!', {
+          description: response.message,
+        });
+      } else {
+        toast.success('Yeay!', {
+          description: 'Registrasi Berhasil',
+        });
+      }
+    } catch (error: any) {
+      console.error('Register Action Error:', error);
+    }
   };
   return (
     <Form {...form}>
