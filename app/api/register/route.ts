@@ -8,8 +8,6 @@ export async function POST(req: NextRequest) {
   try {
     const { name, email, password } = await req.json();
 
-    console.log({ name, email, password });
-
     if (!email || !password || !name) {
       return Response.json(
         { error: 'Form Tidak Boleh Kosong' },

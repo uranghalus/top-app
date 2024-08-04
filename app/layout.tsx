@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
+import AuthProvider from '@/components/providers/AuthProvider';
+import ToastProvider from '@/components/providers/ToastProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,8 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="nord">
       <body className={inter.className}>
-        <Toaster position="top-right" richColors />
-        {children}
+        <ToastProvider />
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

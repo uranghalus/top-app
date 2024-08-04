@@ -7,7 +7,7 @@ import { RiLockPasswordFill, RiMailFill, RiUser2Fill } from 'react-icons/ri';
 import { useForm } from 'react-hook-form';
 import { RegisterForm } from '@/types/FormProps';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { RegisterSchema } from '@/lib/schema/register-schema';
+import { RegisterSchema } from '@/lib/schema/auth-schema';
 import { z } from 'zod';
 import { toast } from 'sonner';
 
@@ -66,7 +66,7 @@ const SignupForm = () => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
         <FormField
           control={form.control}
           name="name"
@@ -111,6 +111,7 @@ const SignupForm = () => {
                 <Input
                   placeholder="Masukkan Password"
                   icons={RiLockPasswordFill}
+                  type="password"
                   {...field}
                 />
               </FormControl>
@@ -118,7 +119,12 @@ const SignupForm = () => {
             </FormItem>
           )}
         />
-        <Buttons type="submit" variant="primary">
+        <Buttons
+          type="submit"
+          variant="primary"
+          className="mt-4"
+          disabled={form.formState.isSubmitting}
+        >
           Submit
         </Buttons>
       </form>
