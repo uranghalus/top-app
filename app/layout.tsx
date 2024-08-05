@@ -3,10 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import AuthProvider from '@/components/providers/AuthProvider';
-<<<<<<< HEAD
-=======
 import ToastProvider from '@/components/providers/ToastProvider';
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,23 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="nord">
       <body className={inter.className}>
-<<<<<<< HEAD
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            unstyled: true,
-            classNames: {
-              toast: 'alert',
-              success: 'alert-success',
-              info: 'alert-info',
-              warning: 'alert-warning',
-              error: 'alert-error',
-            },
-          }}
-        />
-=======
         <ToastProvider />
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

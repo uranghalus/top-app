@@ -51,11 +51,7 @@ const SignupForm = () => {
   };
   return (
     <Form {...form}>
-<<<<<<< HEAD
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-=======
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
         <FormField
           control={form.control}
           name="name"

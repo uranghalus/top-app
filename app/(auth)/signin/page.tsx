@@ -1,10 +1,6 @@
 import Link from 'next/link';
-<<<<<<< HEAD
 import React from 'react';
 import { RiLockPasswordFill, RiMailFill } from 'react-icons/ri';
-=======
-import React, { useEffect } from 'react';
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
 import SigninForm from './SigninForm';
 
 const SignIn = () => {

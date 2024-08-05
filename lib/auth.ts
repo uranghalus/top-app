@@ -2,7 +2,6 @@ import NextAuth, { User } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { prisma } from './prisma';
 import { comparePassword } from './utils/password-utils';
-<<<<<<< HEAD
 import { authconfig } from './auth.config';
 
 interface ExtendedUser extends User {
@@ -10,14 +9,6 @@ interface ExtendedUser extends User {
 }
 export const { auth, handlers, signIn, signOut } = NextAuth({
   ...authconfig,
-=======
-import { authConfig } from './auth.config';
-interface ExtendedUser extends User {
-  role: 'HRD' | 'SPV' | 'USER';
-}
-export const { auth, signIn, signOut, handlers } = NextAuth({
-  ...authConfig,
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
   providers: [
     Credentials({
       name: 'credentials',
@@ -30,18 +21,13 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
           throw new Error('Missing Credentials');
         }
         const user = await prisma.user.findUnique({
-<<<<<<< HEAD
           where: {
             email: credentials.email as string,
           },
-=======
-          where: { email: credentials.email as string },
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
         });
         if (!user) {
           throw new Error('Pengguna Tidak Ditemukan!');
         }
-<<<<<<< HEAD
         const PassswordCorrect = await comparePassword(
           credentials.password as string,
           user.salt as string,
@@ -49,15 +35,6 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
         );
         if (!PassswordCorrect) {
           throw new Error('Password yang anda masukkan salah!');
-=======
-        const isValidPassword = await comparePassword(
-          credentials.password as string,
-          user.salt,
-          user.hash
-        );
-        if (!isValidPassword) {
-          throw new Error('Password Yang Anda Masukkan Salah!');
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
         }
         return user ?? null;
       },

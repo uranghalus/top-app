@@ -1,20 +1,11 @@
-<<<<<<< HEAD
 import { NextAuthConfig } from 'next-auth';
 
 export const authconfig = {
-=======
-import type { NextAuthConfig } from 'next-auth';
-
-export const authConfig = {
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
   pages: {
     error: '/signin',
     signIn: '/signin',
     newUser: '/signup',
   },
-<<<<<<< HEAD
-  secret: process.env.AUTH_SECRET!,
-=======
   callbacks: {
     authorized({ request, auth }: any) {
       const protectedPaths = [
@@ -30,7 +21,6 @@ export const authConfig = {
       return true;
     },
   },
-  secret: process.env.AUTH_SECRET,
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
+  secret: process.env.AUTH_SECRET!,
   providers: [],
 } satisfies NextAuthConfig;

@@ -15,11 +15,7 @@ interface LoginProps {
 const baseurl = 'http://localhost:3000';
 export async function RegisterService(userdata: RegisterProps) {
   try {
-<<<<<<< HEAD
-    const response = await fetch(baseurl + '/api/register', {
-=======
     const response = await fetch(process.env.BASE_URL! + '/api/register', {
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,13 +40,6 @@ export async function RegisterService(userdata: RegisterProps) {
     };
   }
 }
-<<<<<<< HEAD
-=======
-interface LoginProps {
-  email: any;
-  password: any;
-}
->>>>>>> 0bba8710e09936911f13a1c48766f6d693abb852
 export async function loginServices(userData: LoginProps) {
   try {
     await signIn('credentials', {
