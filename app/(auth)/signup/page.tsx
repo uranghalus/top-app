@@ -4,7 +4,7 @@ import SignupForm from './SignupForm';
 
 const SignUp = () => {
   return (
-    <div className="card bg-white w-96 shadow-lg">
+    <div className="card-normal bg-white shadow-lg">
       <div className="card-body">
         <div className="flex flex-col justify-center items-center">
           <div className="card-title text-2xl text-gray-700">Sign Up</div>

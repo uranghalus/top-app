@@ -4,6 +4,7 @@ import LabelInput from '@/components/LabelInput';
 import Link from 'next/link';
 import React from 'react';
 import { RiLockPasswordFill, RiMailFill } from 'react-icons/ri';
+import SigninForm from './SigninForm';
 
 const SignIn = () => {
   return (
@@ -25,44 +26,7 @@ const SignIn = () => {
           <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-300 before:me-6 after:flex-1 after:border-t after:border-gray-300 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600">
             Or
           </div>
-          <form>
-            <div className="grid gap-y-4">
-              <div className="form-control w-full">
-                <LabelInput label="Email" altText={''} />
-                <InputComps
-                  error={undefined}
-                  icons={RiMailFill}
-                  type="email"
-                  placeholder="Masukkan email anda"
-                />
-              </div>
-              <div className="form-control w-full">
-                <LabelInput
-                  label="Password"
-                  isShown={true}
-                  altText={'Forgot Password?'}
-                  href={'/forgot-password'}
-                />
-                <InputComps
-                  error={undefined}
-                  icons={RiLockPasswordFill}
-                  type="password"
-                  placeholder="Masukkan password anda"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label cursor-pointer">
-                  <span className="label-text">Remember me</span>
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    className="checkbox checkbox-primary"
-                  />
-                </label>
-              </div>
-              <Buttons variant="primary">Login</Buttons>
-            </div>
-          </form>
+          <SigninForm />
         </div>
       </div>
     </div>

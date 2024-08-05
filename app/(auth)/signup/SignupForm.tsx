@@ -1,13 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import Buttons from '@/components/Buttons';
-import InputComps from '@/components/InputComps';
-import LabelInput from '@/components/LabelInput';
 import { RiLockPasswordFill, RiMailFill, RiUser2Fill } from 'react-icons/ri';
 import { useForm } from 'react-hook-form';
-import { RegisterForm } from '@/types/FormProps';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { RegisterSchema } from '@/lib/schema/register-schema';
+import { RegisterSchema } from '@/lib/schema/auth-schema';
 import { z } from 'zod';
 import { toast } from 'sonner';
 
@@ -24,21 +21,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { RegisterService } from '@/lib/services/auth-services';
 
-const formSchema = z.object({
-  name: z.string().min(1, {
-    message: 'Nama Tidak Boleh 1 karakter.',
-  }),
-  email: z.string().email({
-    message: 'Please enter a valid email address',
-  }),
-  password: z.string().min(8, {
-    message: 'Password minimal 8 karakter.',
-  }),
-});
-
 const SignupForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof RegisterSchema>>({
+    resolver: zodResolver(RegisterSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -47,7 +32,7 @@ const SignupForm = () => {
   });
 
   // 2. Define a submit handler.
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof RegisterSchema>) => {
     try {
       const response = await RegisterService(values);
       if (response.error) {
@@ -66,7 +51,7 @@ const SignupForm = () => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="name"
@@ -111,6 +96,7 @@ const SignupForm = () => {
                 <Input
                   placeholder="Masukkan Password"
                   icons={RiLockPasswordFill}
+                  type="password"
                   {...field}
                 />
               </FormControl>
