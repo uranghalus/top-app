@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import AuthProvider from '@/components/providers/AuthProvider';
 import ToastProvider from '@/components/providers/ToastProvider';
+import PrelineScript from '@/components/providers/PrelineScript';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,11 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="nord">
+    <html lang="en">
       <body className={inter.className}>
         <ToastProvider />
         <AuthProvider>{children}</AuthProvider>
       </body>
+      <PrelineScript />
     </html>
   );
 }

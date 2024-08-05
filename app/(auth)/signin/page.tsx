@@ -5,14 +5,16 @@ import SigninForm from './SigninForm';
 
 const SignIn = () => {
   return (
-    <div className="card bg-white w-96 shadow-lg">
-      <div className="card-body">
-        <div className="flex flex-col justify-center items-center">
-          <div className="card-title text-2xl text-gray-700">Sign In</div>
-          <p className="mt-2 flex gap-1 text-sm text-gray-600 dark:text-neutral-400">
+    <div className="bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-neutral-900 dark:border-neutral-700">
+      <div className="p-4 sm:p-7">
+        <div className="text-center">
+          <div className="block text-2xl font-bold text-gray-800 dark:text-white">
+            Sign In
+          </div>
+          <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
             Belum Punya Akun?
             <Link
-              className="link link-primary font-bold no-underline"
+              className="ml-2 text-primary-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-primary-500"
               href={'/signup'}
             >
               Daftar Disini

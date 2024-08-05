@@ -7,12 +7,17 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './node_modules/preline/preline.js',
   ],
-  daisyui: {
-    themes: ['light', 'dark', 'nord'],
-  },
   prefix: '',
   theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
     container: {
       center: true,
       padding: '2rem',
@@ -21,6 +26,21 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        primary: {
+          '50': '#f2f7fb',
+          '100': '#e7f0f8',
+          '200': '#d3e2f2',
+          '300': '#b9cfe8',
+          '400': '#9cb6dd',
+          '500': '#839dd1',
+          '600': '#6a7fc1',
+          '700': '#6374ae',
+          '800': '#4a5989',
+          '900': '#414e6e',
+          '950': '#262c40',
+        },
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -37,7 +57,7 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('daisyui')],
+  plugins: [require('tailwindcss-animate'), require('preline/plugin')],
 } satisfies Config;
 
 export default config;
