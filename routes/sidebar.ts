@@ -1,12 +1,29 @@
-import { RiApps2Fill } from 'react-icons/ri';
+import { IconType } from 'react-icons';
+import { RiApps2Fill, RiDatabase2Line, RiUserLine } from 'react-icons/ri';
 
-const iconClasses = `h-6 w-6`;
-const submenuIconClasses = `h-5 w-5`;
-const routes = [
+interface Route {
+  path: string;
+  icon: IconType;
+  name: string;
+  submenu?: Route[];
+}
+const routes: Route[] = [
   {
-    path: '/app/dashboard',
+    path: '/admin',
     icon: RiApps2Fill,
     name: 'Dashboard',
+  },
+  {
+    path: '',
+    icon: RiDatabase2Line,
+    name: 'Master Data',
+    submenu: [
+      {
+        path: '/master-user',
+        icon: RiUserLine,
+        name: 'Data Pengguna',
+      },
+    ],
   },
 ];
 export default routes;

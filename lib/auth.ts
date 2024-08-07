@@ -5,7 +5,8 @@ import { comparePassword } from './utils/password-utils';
 import { authconfig } from './auth.config';
 
 interface ExtendedUser extends User {
-  isAdmin: boolean;
+  role: 'HRD' | 'SPV' | 'USER';
+  profileImage: string;
 }
 export const { auth, handlers, signIn, signOut } = NextAuth({
   ...authconfig,
@@ -49,6 +50,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
           email: user.email,
           name: user.name,
           role: user.role,
+          profileImage: user.profileImage,
         };
       }
       if (trigger === 'update' && session) {
